@@ -76,6 +76,7 @@ let loops2 = 0
 let seta = 0
 let status = 0
 status = 1
+let max_loops = 15
 basic.forever(function () {
     if (status == 1) {
         loops2 = 0
@@ -91,10 +92,12 @@ basic.forever(function () {
     } else if (status == 2) {
         basic.pause(100)
         loops2 += 1
-        if (loops2 > 15) {
+        if (loops2 > max_loops) {
+            max_loops += 1
             status = 4
         }
     } else if (status == 3) {
+        max_loops = max_loops - 1
         tocar_musica_sucesso()
         status = 1
     } else {
